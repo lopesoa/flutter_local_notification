@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:novo_teste_notification/api/notification.dart';
-import 'package:novo_teste_notification/pages/page_teste.dart';
+import 'package:flutter_local_notification/api/notification.dart';
+import 'package:flutter_local_notification/pages/page_teste.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,8 +15,9 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    NotificationApi.init();
+    NotificationApi.init(initScheduled: true);
     listenNotifications();
+    
   }
 
   void listenNotifications() =>
@@ -45,12 +47,12 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.indigo.shade400),
+                          MaterialStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () => NotificationApi.showNotification(
-                          title: 'Titulo teste',
-                          body: 'Body teste',
-                          payLoad: 'teste.abs',
+                          title: 'Notificação Teste',
+                        body: 'Esta é uma notificação de teste',
+                          payLoad: 'teste',
                         ),
                     icon: const Icon(Icons.notifications),
                     label: const Text('Notificação Simples'))),
@@ -61,13 +63,13 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.indigo.shade300),
+                          MaterialStateProperty.all(Colors.indigo),
                     ),
                     onPressed: () {
                       NotificationApi.showScheduledNotification(
-                        title: 'Teste Schedule',
-                        body: 'testando o body do schedule',
-                        payLoad: 'teste neh',
+                       title: 'Notificação Teste',
+                        body: 'Esta é uma notificação de teste',
+                        payLoad: 'teste',
                         scheduleDate: DateTime.now().add(Duration(seconds: 10)),
                       );
                       final snackBar =
@@ -78,6 +80,41 @@ class _HomePageState extends State<HomePage> {
                     },
                     icon: const Icon(Icons.notifications_active),
                     label: const Text('Notificação schedule'))),
+          ),
+           Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: ElevatedButton.icon(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.indigo),
+                    ),
+                    onPressed: () {
+                      NotificationApi.showScheduledNotificationDay(
+                        title: 'Notificação Teste',
+                        body: 'Esta é uma notificação de teste',
+                        payLoad: 'teste',
+                      );
+                      final snackBar =
+                          SnackBar(content: Text('Está notificação será agendada'));
+                      ScaffoldMessenger.of(context)
+                        ..removeCurrentSnackBar()
+                        ..showSnackBar(snackBar);
+                    },
+                    icon: const Icon(Icons.play_circle),
+                    label: const Text('Notificação Programada'))),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+                child: ElevatedButton.icon(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.indigo),
+                    ),
+                    onPressed: () => NotificationApi.cancelAllnotifications(),
+                    icon: const Icon(Icons.delete_forever),
+                    label: const Text('Cancelar Notificações'))),
           ),
         ],
       ),

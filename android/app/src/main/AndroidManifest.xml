@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.novo_teste_notification">
+    package="com.example.flutter_local_notification">
    <application
-        android:label="novo_teste_notification"
+        android:label="flutter_local_notification"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

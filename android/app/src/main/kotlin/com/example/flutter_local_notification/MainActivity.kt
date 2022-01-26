@@ -1,4 +1,4 @@
-package com.example.novo_teste_notification
+package com.example.flutter_local_notification
 
 import io.flutter.embedding.android.FlutterActivity
 

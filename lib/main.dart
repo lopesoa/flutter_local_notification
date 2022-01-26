@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:novo_teste_notification/pages/home_page.dart';
+import 'package:flutter_local_notification/pages/home_page.dart';
+import 'package:timezone/data/latest.dart' as tz;
 
-void main() {
+
+void main() async {
+  tz.initializeTimeZones();
   runApp(const MyApp());
 }
 

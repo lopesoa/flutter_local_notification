@@ -1,6 +1,6 @@
 # Descrição
 
-Exemplo utilizando o package flutter_local_notifications.
+Exemplo utilizando o package flutter_local_notifications.<br>
 Exemplo utilizando o package flutter_foreground_task.
 
 ## Funcionalidades

@@ -12,7 +12,7 @@ class NotificationApi {
   static final onNotifications = BehaviorSubject<String?>();
 
   static Future init({bool initScheduled = false}) async {
-
+    
     //Quando aplicativo estiver fechado
     final details = await _notifications.getNotificationAppLaunchDetails();
     if(details != null && details.didNotificationLaunchApp){

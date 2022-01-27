@@ -11,7 +11,7 @@ O exemplo contém as seguintes funcionalidades
 2 - Notificação após tempo definido <br>
 3 - Notificação programada diariamente <br>
 4 - Cancelar notificações <br>
-5 - Notificação fixa com foreground task
+5 - Notificação fixa com foreground task<br>
 6 - Cancelar notificações ficas
 
 ## Documentação
